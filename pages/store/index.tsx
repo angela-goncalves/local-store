@@ -1,31 +1,34 @@
-// const Dogs: React.FC<DogsProps> = ({res}: any) => {
-//     const router = useRouter()
-//     if(router.isFallback) return <div>loading...</div>
-//     return <div>{JSON.stringify(res)}</div>;
-//     }
-    
-    
-//     // server
-//     export const getStaticPaths = async () => {
-    
-//         return {
-//             paths: [
-                
-//             ],
-//             fallback: true
-//         }
-//     }
-//     export const getStaticProps = async ({params}) => {
-//         console.log(params)
-//         const sleep = async (ms) => await new Promise(resolve => setTimeout(resolve, ms));
-//         await sleep(3000)
-//         const res = data.find(dog => dog.id === params.id)
-    
-//         return {
-//             props: {
-//                res
-//             },
-//             revalidate: 20
-//         }
-//     }
-//     export default Dogs;
+import * as React from 'react';
+import Link from "next/link"
+import data from "../../data.json"
+export interface StoreProps {
+
+
+}
+//Stores List
+const Store: React.FC<StoreProps> = ({ filtered }: any) => {
+    return <div className="flex flex-wrap mx-5 justify-center">
+        {filtered.map(store => (
+            <Link href={`store/${store.company}`}>
+                <div className="bg-red-100 rounded-xl w-28 p-2 m-4 text-center">
+                    <a className="cursor-pointer w-28">
+                        <img src="../../png/logo.jpg" alt="store's logo" className="rounded-xl"/>
+                        <p>{store.company}</p>
+                    </a>
+                </div>
+            </Link>
+        ))}
+    </div>;
+}
+
+export const getStaticProps = async () => {
+    const filtered = data.map(el => {
+        return { company: el.company }
+    })
+    return {
+        props: {
+            filtered
+        }
+    }
+}
+export default Store;
