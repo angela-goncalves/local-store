@@ -1,18 +1,24 @@
 
 export default function CardProduct({ title, description, price }) {
     return (
-        <div className="grid grid-cols-2 space-y-2 sm:flex sm:flex-col rounded-2xl bg-white sm:w-max sm:p-6 shadow-md sm:m-3 p-2">
-            <img src="../png/food-example.jpg" alt={title} className="w-40 rounded-2xl" />
-            <div className="p-2 w-full">
-                <div className="flex flex-col">
-                    <h3>{title}</h3>
-                    <p className="text-gray-500">{description}</p>
+        <div className="my-3 w-full grid justify-items-center sm:flex sm:flex-wrap sm:justify-center">
+            {title.map(element =>
+                <div className="sm:flex sm:flex-col bg-white rounded-xl m-2">
+                    <div className="flex">
+                        <img src="../png/food-example.jpg" alt={`image of ${element}`} className="w-24 h-24 rounded-tl-xl sm:w-36 sm:h-32 " />
+                        <div className="pl-2 pt-2 w-full">
+                            <h3>{element}</h3>
+                            <p className="text-gray-500 h-20 w-48 pr-1 overflow-hidden sm:w-36">{description}</p>
+                        </div>
+                    </div>
+                    <div className="text-center mx-3 my-2 flex justify-between ">
+                        <button className="py-1 w-32 rounded-md bg-blue-500 text-white">
+                            Add
+                        </button>
+                        <p className="self-center text-green-600 font-semibold ml-1">{price}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="text-center pt-2">
-                <button className="py-2 w-full rounded-md bg-blue-500 text-white">Add</button>
-            </div>
-            <p className="self-center justify-self-center text-green-600 font-semibold">{price}</p>
+            )}
         </div>
     )
 }

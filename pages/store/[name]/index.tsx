@@ -3,6 +3,7 @@ import data from "../../../data.json"
 import { useRouter } from 'next/router'
 import HeroSection from 'components/HeroSection'
 import Categories from 'components/Categories'
+import ProductCard from 'components/ProductCard'
 export interface StoreProps {
 
 }
@@ -11,7 +12,7 @@ const Store: React.FC<StoreProps> = ({ localstore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-blue-100 ">
             <HeroSection
                 companyTitle={localstore.company}
                 companyDescription={localstore.description}
@@ -19,14 +20,15 @@ const Store: React.FC<StoreProps> = ({ localstore }: any) => {
                 companyTime={localstore.registered}
             />
             <div className="w-full">
-                <Categories
-                    productCategory={localstore.categories}
-                />
+               <ProductCard 
+               title={localstore.products}
+               description={localstore.productdescription}
+               price={localstore.precio}
+               />
             </div>
         </div>
     )
 }
-
 // server
 export const getStaticPaths = async () => {
 
