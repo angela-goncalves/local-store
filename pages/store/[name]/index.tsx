@@ -8,22 +8,22 @@ export interface StoreProps {
 
 }
 //client
-const Store: React.FC<StoreProps> = ({ localstore }: any) => {
+const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
     return (
         <div className="flex flex-col bg-blue-100 ">
             <HeroSection
-                companyTitle={localstore.company}
-                companyDescription={localstore.description}
-                companyAddress={localstore.address}
-                companyTime={localstore.registered}
+                companyTitle={localStore.company}
+                companyDescription={localStore.description}
+                companyAddress={localStore.address}
+                companyTime={localStore.registered}
             />
             <div className="w-full">
                <ProductCard 
-               title={localstore.products}
-               description={localstore.productdescription}
-               price={localstore.precio}
+               title={localStore.products}
+               description={localStore.productdescription}
+               price={localStore.precio}
                />
             </div>
         </div>
@@ -40,10 +40,10 @@ export const getStaticPaths = async () => {
     }
 }
 export const getStaticProps = async ({ params }) => {
-    const localstore = data.find(find => find.company === params.name)//company's name
+    const localStore = data.find(find => find.company === params.name)//company's name
     return {
         props: {
-            localstore,
+            localStore,
         },
     }
 }
