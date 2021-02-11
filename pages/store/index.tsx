@@ -5,7 +5,7 @@ export interface StoreProps {
 
 
 }
-//Stores List
+
 const Store: React.FC<StoreProps> = ({ filtered }: any) => {
     return <div className="flex flex-wrap mx-5 justify-center">
         {filtered.map(store => (

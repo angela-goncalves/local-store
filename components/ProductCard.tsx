@@ -1,7 +1,9 @@
 
-export default function CardProduct({ title, description, price }) {
+export default function CardProduct({ title, description, price, color1, color2 }) {
+    const bgcolor = color1
+    const bttncolor = color2 
     return (
-        <div className="my-3 w-full grid justify-items-center sm:flex sm:flex-wrap sm:justify-center">
+        <div className={`${bgcolor}-100 py-3 w-full grid justify-items-center sm:flex sm:flex-wrap sm:justify-center`}>
             {title.map(element =>
                 <div className="sm:flex sm:flex-col bg-white rounded-xl m-2">
                     <div className="flex">
@@ -12,7 +14,7 @@ export default function CardProduct({ title, description, price }) {
                         </div>
                     </div>
                     <div className="text-center mx-3 my-2 flex justify-between ">
-                        <button className="py-1 w-32 rounded-md bg-blue-500 text-white">
+                        <button className={`py-1 w-32 rounded-md bg-${bttncolor}-500 text-white`}>
                             Add
                         </button>
                         <p className="self-center text-green-600 font-semibold ml-1">{price}</p>
