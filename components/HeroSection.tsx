@@ -3,8 +3,8 @@ import SocialMedia from './SocialMedia'
 export default function HeroSection({companyTitle, companyDescription, companyAddress, companyTime}) {
     return (
         <div className="">
-            <img src="../png/example-unsplash.jpg" alt="image of the restaurant" className="h-30 w-full object-contain" />
-            <div className="flex flex-wrap sm:mx-16">
+            <img src="../png/example-unsplash.jpg" alt="image of the restaurant" className="h-48 w-full object-cover" />
+            <div className="flex flex-wrap sm:mx-20">
                 <img src="../png/logo.jpg" alt="restaurant's logo" className="w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-white relative bottom-6 left-4 " />
                 <div className="order-3 mb-3 mx-4 sm:ml-10 sm:mt-4">
                     <h1 className="text-2xl mb-2">{companyTitle}</h1>
