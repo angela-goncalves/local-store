@@ -16,7 +16,7 @@ export default function HeroSection({companyTitle, companyDescription, companyAd
                         <p className="text-green-500 ml-2 text-justify">{companyAddress}</p>
                     </div>
                 </div>
-                <div className="w-44 h-20 self-center justify-end ml-8 sm:ml-10 sm:h-40 sm:order-3 ">
+                <div className="w-44 h-20 self-center justify-end ml-8 sm:ml-10 sm:order-3 ">
                     <SocialMedia />
                 </div>
             </div>

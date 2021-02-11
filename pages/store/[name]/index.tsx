@@ -3,30 +3,32 @@ import data from "../../../data.json"
 import { useRouter } from 'next/router'
 import HeroSection from 'components/HeroSection'
 import Categories from 'components/Categories'
+import ProductCard from 'components/ProductCard'
 export interface StoreProps {
 
 }
 //client
-const Store: React.FC<StoreProps> = ({ localstore }: any) => {
+const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-blue-100 ">
             <HeroSection
-                companyTitle={localstore.company}
-                companyDescription={localstore.description}
-                companyAddress={localstore.address}
-                companyTime={localstore.registered}
+                companyTitle={localStore.company}
+                companyDescription={localStore.description}
+                companyAddress={localStore.address}
+                companyTime={localStore.registered}
             />
             <div className="w-full">
-                <Categories
-                    productCategory={localstore.categories}
-                />
+               <ProductCard 
+               title={localStore.products}
+               description={localStore.productDescription}
+               price={localStore.precio}
+               />
             </div>
         </div>
     )
 }
-
 // server
 export const getStaticPaths = async () => {
 
@@ -38,10 +40,10 @@ export const getStaticPaths = async () => {
     }
 }
 export const getStaticProps = async ({ params }) => {
-    const localstore = data.find(find => find.company === params.name)//company's name
+    const localStore = data.find(find => find.company === params.name)//company's name
     return {
         props: {
-            localstore,
+            localStore,
         },
     }
 }
