@@ -22,7 +22,7 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
             <div className="w-full">
                <ProductCard 
                title={localStore.products}
-               description={localStore.productdescription}
+               description={localStore.productDescription}
                price={localStore.precio}
                />
             </div>
