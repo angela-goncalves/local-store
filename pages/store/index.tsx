@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Link from "next/link"
 import data from "../../data.json"
+import { GetStaticProps } from 'next';
+import Modal from 'components/Modal'
 export interface StoreProps {
-
+filtered: { company: string }[]
 
 }
 
-const Store: React.FC<StoreProps> = ({ filtered }: any) => {
+const Store: React.FC<StoreProps> = ({ filtered }) => {
     return <div className="flex flex-wrap mx-5 justify-center">
         {filtered.map(store => (
             <Link href={`store/${store.company}`}>
@@ -21,14 +23,14 @@ const Store: React.FC<StoreProps> = ({ filtered }: any) => {
     </div>;
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const filtered = data.map(el => {
         return { company: el.company }
     })
     return {
         props: {
             filtered
-        }
+        },
     }
 }
 export default Store;
