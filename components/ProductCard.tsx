@@ -1,7 +1,7 @@
 import * as React from "react";
 import Modal from 'components/Modal'
 import ProductCardModal from "./ProductCardModal";
-import Cart from "./Cart";
+
 
 export default function ProductCard({ title, description, price, color2, setAmount}) {
     const [showDialog, setShowDialog] = React.useState(false);
@@ -24,7 +24,7 @@ export default function ProductCard({ title, description, price, color2, setAmou
                     </div>
                 </div>
                 <div className="text-center mx-3 my-2 flex justify-between ">
-                    <button onClick={open} className={`py-1 w-32 rounded-md bg-${color2}-500 text-white`}>
+                    <button onClick={open} className={`py-1 w-32 rounded-md bg-${color2}-500 text-white border border-transparent focus:outline-none focus:ring-2 focus:ring-${color2}-400 hover:bg-${color2}-600`}>
                         Add
                     </button>
                     <p className="self-center text-green-600 font-semibold ml-1">$ {price}</p>

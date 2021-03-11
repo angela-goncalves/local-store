@@ -11,10 +11,12 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet"/>
       </Head>
       <main className="w-screen h-screen flex flex-col justify-center place-items-center">
-        <h1 className = "font-h1 mb-10" >Welcome to...</h1>
-        <button className = "rounded-2xl py-1 w-32 text-white bg-purple-500">
-          <Link href="store"><a>Stores</a></Link>
-        </button>
+        <h1 className = "text-3xl mb-10" >Welcome to...</h1>
+        
+          <Link href="store">
+            <a className = "font-h1 mb-10 text-xl underline">Stores</a>
+          </Link>
+        
       </main>
     </div>
   )
