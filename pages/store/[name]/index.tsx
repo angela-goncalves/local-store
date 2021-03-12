@@ -7,29 +7,33 @@ import ProductCard from 'components/ProductCard'
 export interface StoreProps {
 
 }
-//client
 const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
+    console.log(localStore)
     return (
-        <div className="flex flex-col bg-blue-100 ">
+        <div className="flex flex-col">
             <HeroSection
                 companyTitle={localStore.company}
                 companyDescription={localStore.description}
                 companyAddress={localStore.address}
                 companyTime={localStore.registered}
+                color1={localStore.color1}
             />
             <div className="w-full">
-               <ProductCard 
-               title={localStore.products}
-               description={localStore.productDescription}
-               price={localStore.precio}
-               />
+                {localStore.products.map(product => 
+                <ProductCard
+                    title={product.title}
+                    description={product.description}
+                    price={product.price}
+                    color1={localStore.color1}
+                    color2={localStore.color2}
+                />)}  
             </div>
         </div>
     )
 }
-// server
+
 export const getStaticPaths = async () => {
 
     return {

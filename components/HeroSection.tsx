@@ -1,10 +1,11 @@
 import SocialMedia from './SocialMedia'
 
-export default function HeroSection({companyTitle, companyDescription, companyAddress, companyTime}) {
+export default function HeroSection({companyTitle, companyDescription, companyAddress, companyTime, color1 }) { 
+    const bgcolor = color1 
     return (
-        <div className="">
-            <img src="../png/example-unsplash.jpg" alt="image of the restaurant" className="h-30 w-full object-contain" />
-            <div className="flex flex-wrap sm:mx-16">
+        <div className={`${bgcolor}-50`}>
+            <img src="../png/example-unsplash.jpg" alt="image of the restaurant" className="h-48 w-full object-cover" />
+            <div className="flex flex-wrap sm:mx-20">
                 <img src="../png/logo.jpg" alt="restaurant's logo" className="w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-white relative bottom-6 left-4 " />
                 <div className="order-3 mb-3 mx-4 sm:ml-10 sm:mt-4">
                     <h1 className="text-2xl mb-2">{companyTitle}</h1>
@@ -20,8 +21,8 @@ export default function HeroSection({companyTitle, companyDescription, companyAd
                     <SocialMedia />
                 </div>
             </div>
-            <div className="flex ">
-                <p className="bg-blue-300 w-full text-white self-center text-center py-2">
+            <div className="flex">
+                <p className={`${bgcolor}-300 w-full text-white self-center text-center py-2`}>
                     {companyTime}</p>
             </div>
         </div>
