@@ -1,6 +1,11 @@
 import { useState } from "react"
-
-export default function ProductCardModal({ title, description, price }) {
+interface PropsType {
+    addToCart: (counter: number) => void; 
+    title: string; 
+    description: string; 
+    price:number;
+}
+export default function ProductCardModal({ title, description, price, addToCart }: PropsType ){
     const [counter, setCounter] = useState(1);  
     const add = () => {
         setCounter(counter + 1)
@@ -45,11 +50,12 @@ export default function ProductCardModal({ title, description, price }) {
                         </button>
                     </div>
                 </div>
-                <p>Total: $ {Math.round(price) * counter}</p>
-                <button type="button" className="w-36 self-center rounded-md border border-transparent shadow-sm mt-3 px-4 py-2 bg-green-600 font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 hover:bg-green-700 sm:w-auto sm:text-sm">
+                <p>Total: $ {(Math.round(price)) * counter}</p>
+                <button onClick={() => addToCart(counter)} type="button" className="w-36 self-center rounded-md border border-transparent shadow-sm mt-3 px-4 py-2 bg-green-600 font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 hover:bg-green-700 sm:w-auto sm:text-sm">
                     Add to cart
-                    </button>
+                </button>
             </div>
+            
         </div>
     )
 }

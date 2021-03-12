@@ -4,32 +4,43 @@ import { useRouter } from 'next/router'
 import HeroSection from 'components/HeroSection'
 import Categories from 'components/Categories'
 import ProductCard from 'components/ProductCard'
+import Cart from 'components/Cart';
+
 export interface StoreProps {
 
 }
+
 const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
-    console.log(localStore)
+
+    const [amount, setAmount] = React.useState([]);
+    const { description, address, company, registered, color1, color2 } = localStore
     return (
         <div className="flex flex-col">
             <HeroSection
-                companyTitle={localStore.company}
-                companyDescription={localStore.description}
-                companyAddress={localStore.address}
-                companyTime={localStore.registered}
-                color1={localStore.color1}
+                companyDescription={description}
+                companyAddress={address}
+                companyTitle={company}
+                companyTime={registered}
+                color1={color1}
             />
-            <div className="w-full">
-                {localStore.products.map(product => 
-                <ProductCard
-                    title={product.title}
-                    description={product.description}
-                    price={product.price}
-                    color1={localStore.color1}
-                    color2={localStore.color2}
-                />)}  
+            <div className={`flex flex-wrap w-full justify-center ${localStore.color1}-100`}>
+                {localStore.products.map((product) => {
+                    const { description, title, price } = product
+                    return <ProductCard
+                        description = {description}
+                        title = {title}
+                        price = {price}
+                        color2 = {color2}
+                        setAmount = {setAmount}
+                    />
+                })}
             </div>
+            {amount.length >= 1 ? <Cart
+                cartItems={amount}
+            /> : ''}
+
         </div>
     )
 }

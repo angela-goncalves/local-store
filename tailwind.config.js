@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+  fontFamily:{
+    'h1':['IBM Plex Serif, serif']
+  }
   },
   variants: {
     extend: {},
