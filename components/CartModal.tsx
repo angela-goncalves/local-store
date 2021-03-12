@@ -19,7 +19,7 @@ export default function CartModal({ cartItems }) {
                     }
                     setitems(items - 1)
                 }
-// setItems()
+                // setItems()
                 return (
                     <div className="flex flex-col">
                         <h3>{title}</h3>
@@ -33,9 +33,10 @@ export default function CartModal({ cartItems }) {
                     </div>
                 )
             })}
-            <button className="w-36 self-center rounded-md border border-transparent shadow-sm mt-3 px-4 py-2 bg-green-600 font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 hover:bg-green-700 sm:w-auto sm:text-sm">To Buy</button>
             <p>Total:</p>
-            {}
+            <button className="w-36 self-center rounded-md border border-transparent shadow-sm mt-3 px-4 py-2 bg-green-600 font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 hover:bg-green-700 sm:w-auto sm:text-sm">
+                To Buy
+            </button>
             <div>
                 {/* <p>{items.reduce(((accumulator, currentValue) => accumulator + currentValue), 0)}</p> */}
 

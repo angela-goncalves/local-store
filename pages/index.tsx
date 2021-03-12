@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="w-full bg-blue-50">
+    <div className="w-full ">
       <Head>
         <title>Local Store</title>
         <link rel="icon" href="/favicon.ico" />

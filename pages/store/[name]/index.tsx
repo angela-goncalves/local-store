@@ -14,48 +14,43 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
 
-    const allColors = [
-        "red",
-        "indigo",
-        "gray",
-        "yellow",
-        "blue",
-        "purple",
-        "pink",
-    ]
-
     const [amount, setAmount] = React.useState([]);
-    const { description, address, company, registered, color1, color2 } = localStore
-
-    const storeColors = allColors.filter((element) => {
-            if ( color2 === element ) {
-                return element
-            }
+    const { description, address, company, registered, color1} = localStore
+   
+    const pepe = (color) =>{
+        return ({
+            primary: `bg-${color}-100`,
+            secundary: `bg-${color}-500`,
+            focusRing: `focus:ring-${color}-300`,
+            hover: `hover:bg-${color}-700`
         })
+    } 
+
+    const theColor = pepe(color1)
 
     return (
         <div className="flex flex-col">
             <HeroSection
-                companyDescription={description}
-                companyAddress={address}
-                companyTitle={company}
-                companyTime={registered}
-                color1={color1}
+                companyDescription = {description}
+                companyAddress = {address}
+                companyTitle = {company}
+                companyTime = {registered}
+                color1 = {theColor}
             />
-            <div className={`flex flex-wrap w-full justify-center ${localStore.color1}-100`}>
+            <div className={`flex flex-wrap w-full justify-center ${theColor.primary}`}>
                 {localStore.products.map((product) => {
                     const { description, title, price } = product
                     return <ProductCard
-                        description={description}
-                        title={title}
-                        price={price}
-                        color2={storeColors}
-                        setAmount={setAmount}
+                        description = {description}
+                        title = {title}
+                        price = {price}
+                        color2 = {theColor}
+                        setAmount = {setAmount}
                     />
                 })}
             </div>
             {amount.length >= 1 ? <Cart
-                cartItems={amount}
+                cartItems = {amount}
             /> : ''}
 
         </div>
