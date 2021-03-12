@@ -14,8 +14,25 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
     if (router.isFallback) return <div>loading...</div>
 
+    const allColors = [
+        "red",
+        "indigo",
+        "gray",
+        "yellow",
+        "blue",
+        "purple",
+        "pink",
+    ]
+
     const [amount, setAmount] = React.useState([]);
     const { description, address, company, registered, color1, color2 } = localStore
+
+    const storeColors = allColors.filter((element) => {
+            if ( color2 === element ) {
+                return element
+            }
+        })
+
     return (
         <div className="flex flex-col">
             <HeroSection
@@ -29,11 +46,11 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
                 {localStore.products.map((product) => {
                     const { description, title, price } = product
                     return <ProductCard
-                        description = {description}
-                        title = {title}
-                        price = {price}
-                        color2 = {color2}
-                        setAmount = {setAmount}
+                        description={description}
+                        title={title}
+                        price={price}
+                        color2={storeColors}
+                        setAmount={setAmount}
                     />
                 })}
             </div>

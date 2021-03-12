@@ -9,7 +9,6 @@ export default function CartModal({ cartItems }) {
                 const { title, description, price, counter } = cart
 
                 const [items, setitems] = useState(counter);
-                console.log(items)
 
                 const add = () => {
                     setitems(items + 1)
@@ -20,7 +19,7 @@ export default function CartModal({ cartItems }) {
                     }
                     setitems(items - 1)
                 }
-
+// setItems()
                 return (
                     <div className="flex flex-col">
                         <h3>{title}</h3>
@@ -31,12 +30,13 @@ export default function CartModal({ cartItems }) {
                             <p>{items}</p>
                             <button onClick={add}> + </button>
                         </div>
-                        <button className="w-36 self-center rounded-md border border-transparent shadow-sm mt-3 px-4 py-2 bg-green-600 font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 hover:bg-green-700 sm:w-auto sm:text-sm">To Buy</button>
                     </div>
                 )
             })}
+            <button className="w-36 self-center rounded-md border border-transparent shadow-sm mt-3 px-4 py-2 bg-green-600 font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-400 hover:bg-green-700 sm:w-auto sm:text-sm">To Buy</button>
+            <p>Total:</p>
+            {}
             <div>
-                <p>Total:</p>
                 {/* <p>{items.reduce(((accumulator, currentValue) => accumulator + currentValue), 0)}</p> */}
 
             </div>
