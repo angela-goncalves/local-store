@@ -23,7 +23,7 @@ export default function ProductCard({ title, description, price, color2, setAmou
                     </div>
                 </div>
                 <div className="text-center mx-3 my-2 flex justify-between ">
-                    <button onClick={open} className={`py-1 w-32 rounded-md ${color2.secundary} text-white border border-transparent focus:outline-none focus:ring-2 ${color2.focusRing} ${color2.hover}`}>
+                    <button onClick={open} className={`py-1 w-32 rounded-md ${color2.button} text-white border border-transparent focus:outline-none focus:ring-2 ${color2.ring} ${color2.focusRing} ${color2.hover}`}>
                         Add
                     </button>
                     <p className="self-center text-green-600 font-semibold ml-1">$ {price}</p>

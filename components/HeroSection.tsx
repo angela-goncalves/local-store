@@ -3,7 +3,7 @@ import SocialMedia from './SocialMedia'
 export default function HeroSection({companyTitle, companyDescription, companyAddress, companyTime, color1 }) { 
      
     return (
-        <div className={`${color1.primary}`}>
+        <div className={`${color1.backgound}`}>
             <img src="../png/example-unsplash.jpg" alt="image of the restaurant" className="h-48 w-full object-cover" />
             <div className="flex flex-wrap sm:mx-20">
                 <img src="../png/logo.jpg" alt="restaurant's logo" className="w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-white relative bottom-6 left-4 " />
@@ -22,7 +22,7 @@ export default function HeroSection({companyTitle, companyDescription, companyAd
                 </div>
             </div>
             <div className="flex">
-                <p className={`${color1.secundary} w-full text-white self-center text-center py-2`}>
+                <p className={`${color1.bgTime} w-full text-white self-center text-center py-2`}>
                     {companyTime}</p>
             </div>
         </div>

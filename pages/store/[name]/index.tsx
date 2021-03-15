@@ -15,42 +15,106 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     if (router.isFallback) return <div>loading...</div>
 
     const [amount, setAmount] = React.useState([]);
-    const { description, address, company, registered, color1} = localStore
-   
-    const pepe = (color) =>{
-        return ({
-            primary: `bg-${color}-100`,
-            secundary: `bg-${color}-500`,
-            focusRing: `focus:ring-${color}-300`,
-            hover: `hover:bg-${color}-700`
-        })
-    } 
+    const { description, address, company, registered, color1 } = localStore
 
+    const pepe = (color) => {
+        if (color === "red") {
+            return {
+                backgound: 'bg-red-50',
+                bgTime: 'bg-green-200',
+                button: 'bg-green-400',
+                ring: 'ring-green-600',
+                focusRing: 'focus:ring-green-600',
+                hover: 'hover:bg-green-600'
+            }
+        }
+        if (color === "green") {
+            return {
+                backgound: 'bg-green-50',
+                bgTime: 'bg-red-300',
+                button: 'bg-red-400',
+                ring: 'ring-red-600',
+                focusRing: 'focus:ring-red-600',
+                hover: 'hover:bg-red-600'
+            }
+        }
+        if (color === "yellow") {
+            return {
+                backgound: 'bg-yellow-50',
+                bgTime: 'bg-blue-200',
+                button: 'bg-blue-400',
+                ring: 'ring-blue-600',
+                focusRing: 'focus:ring-blue-600',
+                hover: 'hover:bg-blue-600'
+            }
+        }
+        if (color === "blue") {
+            return {
+                backgound: 'bg-blue-100',
+                bgTime: 'bg-yellow-200',
+                button: 'bg-yellow-400',
+                ring: 'ring-yellow-600',
+                focusRing: 'focus:ring-yellow-600',
+                hover: 'hover:bg-yellow-600'
+            }
+        }
+        if (color === "indigo") {
+            return {
+                backgound: 'bg-indigo-100',
+                bgTime: 'bg-yellow-200',
+                button: 'bg-yellow-400',
+                ring: 'ring-yellow-600',
+                focusRing: 'focus:ring-yellow-600',
+                hover: 'hover:bg-yellow-600'
+            }
+        }
+        if (color === "purple") {
+            return {
+                backgound: 'bg-purple-100',
+                bgTime: 'bg-pink-200',
+                button: 'bg-pink-400',
+                ring: 'ring-pink-600',
+                focusRing: 'focus:ring-pink-600',
+                hover: 'hover:bg-pink-600'
+            }
+        }
+        if (color === "pink") {
+            return {
+                backgound: 'bg-pink-100',
+                bgTime: 'bg-purple-200',
+                button: 'bg-purple-400',
+                ring: 'ring-purple-600',
+                focusRing: 'focus:ring-purple-600',
+                hover: 'hover:bg-purple-600'
+            }
+        }
+    }
     const theColor = pepe(color1)
 
     return (
         <div className="flex flex-col">
             <HeroSection
-                companyDescription = {description}
-                companyAddress = {address}
-                companyTitle = {company}
-                companyTime = {registered}
-                color1 = {theColor}
+                companyDescription={description}
+                companyAddress={address}
+                companyTitle={company}
+                companyTime={registered}
+                color1={theColor}
+
             />
-            <div className={`flex flex-wrap w-full justify-center ${theColor.primary}`}>
+            <div className={`flex flex-wrap w-full justify-center ${theColor.backgound}`}>
                 {localStore.products.map((product) => {
                     const { description, title, price } = product
                     return <ProductCard
-                        description = {description}
-                        title = {title}
-                        price = {price}
-                        color2 = {theColor}
-                        setAmount = {setAmount}
+                        description={description}
+                        title={title}
+                        price={price}
+                        color2={theColor}
+                        setAmount={setAmount}
                     />
                 })}
             </div>
             {amount.length >= 1 ? <Cart
-                cartItems = {amount}
+                cartItems={amount}
             /> : ''}
 
         </div>
