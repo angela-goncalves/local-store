@@ -43,4 +43,4 @@ export default function CartModal({ cartItems }) {
             </div>
         </div>
     )
-}
+} 
