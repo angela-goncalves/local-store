@@ -3,15 +3,15 @@ import Modal from 'components/Modal'
 import ProductCardModal from "./ProductCardModal";
 
 
-export default function ProductCard({ title, description, price, color2, setAmount}) {
+export default function ProductCard({ title, description, price, color2, setAmount, id }) {
     const [showDialog, setShowDialog] = React.useState(false);
     const open = () => setShowDialog(true);
     const close = () => setShowDialog(false);
 
     const addToCart = (counter: number) => {
-        setAmount((prev) => [...prev, {title, description, price, color2, counter, total: price*counter}])
+        setAmount((prev) => [...prev, {title, description, price, color2, counter, total: price*counter, id}])
         close()
-    }   
+    } 
 
     return (
         <div className="py-3 grid justify-items-center sm:flex sm:flex-wrap sm:justify-center">
@@ -24,7 +24,7 @@ export default function ProductCard({ title, description, price, color2, setAmou
                     </div>
                 </div>
                 <div className="text-center mx-3 my-2 flex justify-between ">
-                    <button onClick={open} className={`py-1 w-32 rounded-md bg-${color2}-500 text-white border border-transparent focus:outline-none focus:ring-2 focus:ring-${color2}-400 hover:bg-${color2}-600`}>
+                    <button onClick={open} className={`py-1 w-32 rounded-md ${color2.button} text-white border border-transparent focus:outline-none focus:ring-2 ${color2.ring} ${color2.focusRing} ${color2.hover}`}>
                         Add
                     </button>
                     <p className="self-center text-green-600 font-semibold ml-1">$ {price}</p>
