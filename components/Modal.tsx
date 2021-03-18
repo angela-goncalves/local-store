@@ -9,7 +9,7 @@ export default function Modal({children, isOpen, close}) {
 
                 <div className="flex items-center justify-center min-h-screen py-4 px-4 text-center sm:block sm:pb-0">
 
-                    <DialogContent>
+                    <DialogContent aria-label='modal'>
                     {children}
                     </DialogContent>
 

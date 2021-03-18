@@ -3,15 +3,16 @@ import Modal from 'components/Modal'
 import ProductCardModal from "./ProductCardModal";
 
 
-export default function ProductCard({ title, description, price, color2, setAmount}) {
+export default function ProductCard({ title, description, price, color2, setAmount, id }) {
     const [showDialog, setShowDialog] = React.useState(false);
     const open = () => setShowDialog(true);
     const close = () => setShowDialog(false);
 
     const addToCart = (counter: number) => {
-        setAmount((prev) => [...prev, {title, description, price, color2, counter, total: price*counter}])
+        setAmount((prev) => [...prev, {title, description, price, color2, counter, total: price*counter, id}])
         close()
     } 
+
     return (
         <div className="py-3 grid justify-items-center sm:flex sm:flex-wrap sm:justify-center">
             <div className="sm:flex sm:flex-col bg-white rounded-xl m-2">

@@ -12,12 +12,11 @@ export interface StoreProps {
 
 const Store: React.FC<StoreProps> = ({ localStore }: any) => {
     const router = useRouter()
-    if (router.isFallback) return <div>loading...</div>
 
-    const [amount, setAmount] = React.useState([]);
+    const [cartItems, setCartItems] = React.useState([]);
+
     const { description, address, company, registered, color1 } = localStore
-
-    const pepe = (color) => {
+    const colorsTw = (color) => {
         if (color === "red") {
             return {
                 backgound: 'bg-red-50',
@@ -89,8 +88,14 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
             }
         }
     }
-    const theColor = pepe(color1)
+    const theColor = colorsTw(color1)
 
+    const deleteItem = (id) => {
+        setCartItems(cartItems.filter((item) => item.id !== id))
+    }
+//cambiar amount a cartItems 
+//setCartItems(counter + 1) para cuando se sume el counter se actualice el valor en los dos componentes por lo tanto en el setCartItems debe ser ahora el q tenga el counter y los demas props(...prev) 
+//
     return (
         <div className="flex flex-col">
             <HeroSection
@@ -99,22 +104,28 @@ const Store: React.FC<StoreProps> = ({ localStore }: any) => {
                 companyTitle={company}
                 companyTime={registered}
                 color1={theColor}
-
             />
             <div className={`flex flex-wrap w-full justify-center ${theColor.backgound}`}>
                 {localStore.products.map((product) => {
-                    const { description, title, price } = product
-                    return <ProductCard
-                        description={description}
-                        title={title}
-                        price={price}
-                        color2={theColor}
-                        setAmount={setAmount}
-                    />
+
+                    const { description, title, price, id } = product
+                    return (
+                        <div key={id}>
+                            <ProductCard
+                                id={id}
+                                description={description}
+                                title={title}
+                                price={price}
+                                color2={theColor}
+                                setAmount={setCartItems}
+                            />
+                        </div>
+                    )
                 })}
             </div>
-            {amount.length >= 1 ? <Cart
-                cartItems={amount}
+            {cartItems.length >= 1 ? <Cart
+                deleteItem={deleteItem}
+                cartItems={cartItems}
             /> : ''}
 
         </div>
@@ -127,7 +138,7 @@ export const getStaticPaths = async () => {
         paths: [
 
         ],
-        fallback: true
+        fallback: 'blocking'
     }
 }
 export const getStaticProps = async ({ params }) => {

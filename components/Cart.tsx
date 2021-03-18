@@ -3,7 +3,7 @@ import CartModal from "./CartModal";
 import Modal from "./Modal";
 
 
-export default function Cart({ cartItems }) {
+export default function Cart({ cartItems, deleteItem }) {
     
     const [showDialog, setShowDialog] = React.useState(false);
     const open = () => setShowDialog(true);
@@ -14,10 +14,10 @@ export default function Cart({ cartItems }) {
     }
     
     const arr = (x) => x.map((item) => item.counter).reduce(sum, 0)
-    const items = arr(cartItems)
+    const items = cartItems && arr(cartItems)
 
     const total = (p) => p.map((price) => price.total).reduce(sum, 0)
-    const totals = total(cartItems)
+    const totals = cartItems &&  total(cartItems)
 
     return (
         <div className="fixed bottom-1 left-1">
@@ -30,6 +30,7 @@ export default function Cart({ cartItems }) {
             >
                 <CartModal
                 cartItems={cartItems}
+                deleteItem={deleteItem}
                 />
             </Modal>
         </div>
